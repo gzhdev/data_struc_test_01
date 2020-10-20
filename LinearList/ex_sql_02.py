@@ -1,4 +1,4 @@
-from ex_sql_01 import SqList
+from LinearList.ex_sql_01 import SqList
 
 
 def SQLcombine(sql0, sql1):

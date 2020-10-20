@@ -1,6 +1,3 @@
-import IList
-
-
 # 节点类描述
 class Node(object):
     def __init__(self, data=None, next=None):
