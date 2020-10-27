@@ -150,7 +150,7 @@ class SqString(IString):
         for i in range(self.curLen):
             print(self.strValue[i], end=' ')
 
-
+'''
 # (1) 创建串s="abcdefghefghijklmn"和串s1="xyz"
 str0 = "abcdefghefghijklmn"
 str1 = "xyz"
@@ -188,3 +188,4 @@ s4 = SqString(s1.strValue)
 s4.concat(s2)
 # (13) 输出串s4。
 s4.display()
+'''
