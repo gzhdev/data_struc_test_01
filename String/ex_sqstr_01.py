@@ -100,14 +100,14 @@ class SqString(IString):
     def insert(self, i, str):
         if i < 0 or i > self.curLen:
             raise IndexError("插入位置不合法")
-        length = len(str)
+        length = str.length()
         newCapacity = self.curLen + length
         self.allocate(newCapacity)
         for j in range(self.curLen - 1, i - 1, -1):
             self.strValue[j + length] = self.strValue[j]
         for j in range(i, i + length):
             # print(j-i,str.charAt(j-i))
-            self.strValue[j] = str[j - i]
+            self.strValue[j] = str.charAt(j - i)
         self.curLen = newCapacity
 
     def delete(self, begin, end):
@@ -121,25 +121,25 @@ class SqString(IString):
         self.insert(self.curLen, str)
 
     def compareTo(self, str):
-        n = self.curLen if self.curLen < len(str) else len(str)
+        n = self.curLen if self.curLen < str.length() else str.length()
         for i in range(n):
-            if self.strValue[i] > str[i]:
+            if self.strValue[i] > str.charAt(i):
                 return 1
-            if self.strValue[i] < str[i]:
+            if self.strValue[i] < str.charAt(i):
                 return -1
-        if self.curLen > len(str):
+        if self.curLen > str.length():
             return 1
-        elif self.curLen < len(str):
+        elif self.curLen < str.length():
             return -1
         return 0
 
     def indexOf(self, str, begin):
-        if len(str) <= self.curLen and str is not None and self.curLen > 0:
+        if str.length() <= self.curLen and str is not None and self.curLen > 0:
             i = begin
-            length = len(str)
+            length = str.length()
             while i <= self.curLen - length:
                 for j in range(length):
-                    if str[i] != self.strValue[j + i]:
+                    if str.charAt(i) != self.strValue[j + i]:
                         i += 1
                         break
                     elif j == length - 1:
@@ -151,7 +151,6 @@ class SqString(IString):
             print(self.strValue[i], end=' ')
 
 
-'''
 # (1) 创建串s="abcdefghefghijklmn"和串s1="xyz"
 str0 = "abcdefghefghijklmn"
 str1 = "xyz"
@@ -164,7 +163,7 @@ print("\n", end="")
 print(s.length())
 # # (4) 在串s的第9个字符位置插入串s1而产生串s2。
 # s2 = SqString(s.strValue)
-# s2.insert(9, s1.strValue)
+# s2.insert(9, s1)
 # # (5) 输出串s2。
 # s2.display()
 # # (6) 删除串s的第2个字符开始的5个字符而产生串s2。
@@ -175,19 +174,17 @@ print(s.length())
 # (8) 将串s的第2个字符开始的5个字符替换成串s1而产生串s2。
 s2 = SqString(s.strValue)
 s2.delete(2, 7)
-s2.insert(2,s1.strValue)
+s2.insert(2, s1)
 # (9) 输出串s2。
 s2.display()
 print("\n", end="")
 # (10) 提取串s的第2个字符开始的10个字符而产生串s3。
-s3 = s.subString(2,12)
+s3 = s.subString(2, 12)
 # (11) 输出串s3。
 s3.display()
 print("\n", end="")
 # (12) 将串s1和串s2连接起来而产生串s4。
 s4 = SqString(s1.strValue)
-s4.concat(s2.strValue)
+s4.concat(s2)
 # (13) 输出串s4。
 s4.display()
-'''
-
