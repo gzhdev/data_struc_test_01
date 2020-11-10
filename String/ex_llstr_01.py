@@ -152,7 +152,7 @@ class LinkString(IString):
             tmp.append(lls.charAt(i))
         self.creat_tail(tmp)
 
-    def compareTo(self, str):
+    def coxmpareTo(self, str):
         n = self.length() if self.length() < len(str) else len(str)
         for i in range(n):
             if self.charAt(i) > str[i]:
@@ -171,7 +171,7 @@ class LinkString(IString):
             length = len(str)
             while i <= self.length() - length:
                 for j in range(length):
-                    if str[i] != self.charAt(j + i):
+                    if str[j] != self.charAt(j + i):
                         i += 1
                         break
                     elif j == length - 1:

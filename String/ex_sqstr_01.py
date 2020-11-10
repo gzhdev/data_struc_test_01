@@ -139,7 +139,7 @@ class SqString(IString):
             length = str.length()
             while i <= self.curLen - length:
                 for j in range(length):
-                    if str.charAt(i) != self.strValue[j + i]:
+                    if str.charAt(j) != self.strValue[j + i]:
                         i += 1
                         break
                     elif j == length - 1:
