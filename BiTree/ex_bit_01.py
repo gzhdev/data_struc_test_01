@@ -71,7 +71,7 @@ class BiTree(object):
             if p.rchild is not None:
                 q.offer(p.rchild)
 
-    def creatBiTree(self, preoString, inoString, preo, ino, n):
+    def creatBiTree(self, preoString, inoString, preo, ino, n):  # 由先序遍历和中序遍历
         # preoString 存放先序序列，inoString 存放中序序列，preo指向当前先序序列的根节点，ino指向当前中序序列的第一个元素，n为二叉树的节点个数
         if n > 0:
             i = 0
@@ -85,4 +85,28 @@ class BiTree(object):
             root.rchild = BiTree().creatBiTree(preoString, inoString, preo + i + 1, ino + i + 1, n - i - 1)  # 构建右子树
             return root
 
+    def creatBiTree2(self, postoString, inoString, posto, ino,  n):  # 由中序遍历和后序遍历建立
+        # postoString 存放后序序列，inoString 存放中序序列，posto指向当前先序序列的根节点，ino指向当前中序序列的最后一个元素，n为二叉树的节点个数
 
+        if n > 0:
+            i = 0
+            c = postoString[posto]  # c为先序序列 preoString 的根节点
+            while i < n:  # 在中序序列 inoString 中找等于 c 的位置 i
+                if inoString[ino - i] == c:
+                    break
+                i += 1
+            root = BiTreeNode(c)
+            root.rchild = BiTree().creatBiTree2(postoString, inoString, posto-1, ino, i)  # 构造右子树
+            root.lchild = BiTree().creatBiTree2(postoString, inoString, posto - i - 1, ino - i - 1, n - i - 1)  # 构建左子树
+            return root
+
+    def creatBiTree3(self, properoString):  # 由拓展的先序遍历建立
+        for i in properoString:
+            if i == '#':  # 递归结束，建空树
+                root = None
+                return root
+            else:
+                root = BiTreeNode(i)
+                root.lchild = BiTree.creatBiTree3()
+                root.rchild = BiTree.creatBiTree3()
+                return root
