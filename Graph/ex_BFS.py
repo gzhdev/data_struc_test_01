@@ -81,7 +81,7 @@ class ALGraph:
     def createUDG(self):
         v = self.v
         self.v = [None] * self.vNum
-        for i in range(self.eNum):  # 创建顶点表
+        for i in range(self.vNum):  # 创建顶点表
             self.v[i] = vNode(v[i])
         for i in range(self.eNum):  # 创建边表
             a, b = self.e[i]  # 获取一组边的信息
@@ -92,7 +92,7 @@ class ALGraph:
     def createDG(self):
         v = self.v
         self.v = [None] * self.vNum
-        for i in range(self.eNum):  # 创建顶点表
+        for i in range(self.vNum):  # 创建顶点表
             self.v[i] = vNode(v[i])
         for i in range(self.eNum):  # 创建边表
             a, b = self.e[i]  # 获取一组边的信息
@@ -102,7 +102,7 @@ class ALGraph:
     def createUDN(self):
         v = self.v
         self.v = [None] * self.vNum
-        for i in range(self.eNum):  # 创建顶点表
+        for i in range(self.vNum):  # 创建顶点表
             self.v[i] = vNode(v[i])
         for i in range(self.eNum):  # 创建边表
             a, b, w = self.e[i]  # 获取一组边的信息
@@ -113,7 +113,7 @@ class ALGraph:
     def createDN(self):
         v = self.v
         self.v = [None] * self.vNum
-        for i in range(self.eNum):  # 创建顶点表
+        for i in range(self.vNum):  # 创建顶点表
             self.v[i] = vNode(v[i])
         for i in range(self.eNum):  # 创建边表
             a, b, w = self.e[i]  # 获取一组边的信息
@@ -144,11 +144,11 @@ def BFSTraverse(g):
         print()
 
 
-v0 = ['0', '1', '2', '3', '4']
+v0 = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
 e0 = [
-    ('0', '1'), ('0', '2'), ('0', '3'), ('1', '4'), ('2', '4')
-]
+    ('A', 'B'), ('A', 'D'), ('A', 'E'), ('B', 'C'), ('B', 'E'), ('C', 'F'), ('D', 'G'), ('E', 'G'),
+    ('G', 'H'), ('H', 'I')]
 g0 = ALGraph(ALGraph.GRAPHKIND_UDG, len(v0), len(e0), v0, e0)
 g0.creatGraph()
 visited0 = [False] * len(v0)
-BFSTraverse(g0)
+BFS(g0, 0, visited0)
