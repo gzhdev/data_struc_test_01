@@ -1,8 +1,7 @@
 import sys
-from Graph.Graph import IGraph
 
 
-class MGraph(IGraph):
+class MGraph:
     GRAPHKIND_UDG = 'UDG'  # 无向图
     GRAPHKIND_DG = 'DG'  # 有向图
     GRAPHKIND_UDN = 'UDN'  # 无向网
