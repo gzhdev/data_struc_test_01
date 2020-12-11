@@ -113,8 +113,8 @@ class MGraph(IGraph):
         self.e = e
 
     def createUDG(self):
-        e = [[0] * self.vNum for i in range(self.eNum)]
-        for i in range(self.vNum):
+        e = [[0] * self.vNum for i in range(self.eNum - 1)]
+        for i in range(self.eNum):
             a, b = self.e[i]
             m, n = self.locateVex(a), self.locateVex(b)
             e[m][n] = e[n][m] = 1
@@ -122,7 +122,7 @@ class MGraph(IGraph):
 
     def createDG(self):
         e = [[0] * self.vNum for i in range(self.eNum)]
-        for i in range(self.vNum):
+        for i in range(self.eNum):
             a, b = self.e[i]
             m, n = self.locateVex(a), self.locateVex(b)
             e[m][n] = 1
@@ -150,11 +150,9 @@ def DFSTraverse(g):  # 以每个顶点作为起始顶点开始遍历
 v0 = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
 e0 = [
     ('A', 'B'), ('A', 'D'), ('A', 'E'), ('B', 'C'), ('B', 'E'), ('C', 'F'), ('D', 'G'), ('E', 'G'),
-    ('G', 'H'), ('H', 'I')
-]
+    ('G', 'H'), ('H', 'I')]
 g0 = MGraph(MGraph.GRAPHKIND_UDG, len(v0), len(e0), v0, e0)
 g0.creatGraph()
 visited0 = [False] * g0.getVNum()
 DFS(g0, 0, visited0)
-print("DFSTraverse\n")
-DFSTraverse(g0)
+
