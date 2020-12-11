@@ -97,7 +97,7 @@ class MGraph(IGraph):
         return -1
 
     def createUDN(self):
-        e = [[sys.maxsize] * self.vNum for i in range(self.eNum)]  # 初始化邻接矩阵，边的权值都设为最大值sys.maxsze
+        e = [[sys.maxsize] * self.vNum for i in range(self.eNum - 1)]  # 初始化邻接矩阵，边的权值都设为最大值sys.maxsze
         for i in range(self.eNum):  # 构造邻接矩阵
             a, b, w = self.e[i]
             m, n = self.locateVex(a), self.locateVex(b)
@@ -105,7 +105,7 @@ class MGraph(IGraph):
         self.e = e
 
     def createDN(self):
-        e = [[sys.maxsize] * self.vNum for i in range(self.eNum)]  # 初始化邻接矩阵，边的权值都设为最大值sys.maxsze
+        e = [[sys.maxsize] * self.vNum for i in range(self.eNum - 1)]  # 初始化邻接矩阵，边的权值都设为最大值sys.maxsze
         for i in range(self.eNum):  # 构造邻接矩阵
             a, b, w = self.e[i]
             m, n = self.locateVex(a), self.locateVex(b)
@@ -121,7 +121,7 @@ class MGraph(IGraph):
         self.e = e
 
     def createDG(self):
-        e = [[0] * self.vNum for i in range(self.eNum)]
+        e = [[0] * self.vNum for i in range(self.eNum - 1)]
         for i in range(self.eNum):
             a, b = self.e[i]
             m, n = self.locateVex(a), self.locateVex(b)
