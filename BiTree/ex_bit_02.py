@@ -35,3 +35,9 @@ class HuffmanTree(object):
         if c not in self.index:
             raise Exception("未编码的字符")
         return self.index[c]
+
+
+data = [('a', 5), ('b', 2), ('c', 9), ('d', 11), ('e', 8), ('f', 3), ('g', 7)]
+t = HuffmanTree(data)
+for c, w in data:
+    print("字符%s的哈夫曼编码为：%s" % (c, t.queryHuffmanCode(c)))
