@@ -52,7 +52,7 @@ class SqList:
             print(self.listItem[i].data, end=' ')
 
     # 插入排序
-    def insertSort(self):
+    def insertSort(self):  # 直接插入排序
         # 进行len-1次扫描
         for i in range(1, self.curLen):
             p = self.listItem[i]
