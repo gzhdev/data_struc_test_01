@@ -53,7 +53,7 @@ class SqList:  # 顺序表类
             print(self.listItem[i].data, end=' ')
 
     def seqSearch(self, key):  # 顺序查找
-        for i in range(self.length()):
+        for i in range(self.curLen):
             if self.listItem[i].key == key:
                 return self.listItem[i].data
         return -1
