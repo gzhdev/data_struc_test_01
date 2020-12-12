@@ -100,13 +100,14 @@ class BiTree(object):
             root.lchild = BiTree().creatBiTree2(postoString, inoString, posto - i - 1, ino - i - 1, n - i - 1)  # 构建左子树
             return root
 
-    def creatBiTree3(self, properoString):  # 由拓展的先序遍历建立
-        for i in properoString:
-            if i == '#':  # 递归结束，建空树
-                root = None
-                return root
-            else:
-                root = BiTreeNode(i)
-                root.lchild = BiTree.creatBiTree3()
-                root.rchild = BiTree.creatBiTree3()
-                return root
+    def creatBiTree3(self):  # 由拓展的先序遍历建立
+        c = input('请输入一个字符：')  # 输入字符c
+        if c == '#':
+            root = None
+            return root
+        else:
+            root = BiTreeNode(c)
+            root.lchild = BiTree().creatBiTree3()
+            root.rchild = BiTree().creatBiTree3()
+            return root
+
